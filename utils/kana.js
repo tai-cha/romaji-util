@@ -9,14 +9,14 @@ class Kana {
         if (type === "hebon") {
             // 表に従って置換する
             SORTED_HEBON_TABLE.forEach(str=>{
-                if(result.includes(str[0])){
+                while(result.includes(str[0])){
                     result = result.replace(str[0], str[2])
                 }
-                if(result.includes(str[1])) {
+                while(result.includes(str[1])) {
                     result = result.replace(str[1], str[2])
                 }
             })
-            // 促音の処理
+            //促音の処理
             for(let i=0;i<result.length;i++){
                 if(["っ", "ッ"].includes(result[i])) {
                     if (i == result.length - 1 || ["っ", "ッ"].includes(result[i+1])) {
