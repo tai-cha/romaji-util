@@ -4,6 +4,8 @@ class RomajiUtil {
 }
 export default RomajiUtil
 
-const example = new RomajiUtil.Kana("あいうえお")
-console.log(example.toRomaji())
-console.log(RomajiUtil.Kana.toRomaji("テストにこめ"))
+if(process.argv.length > 2) {
+    console.log(RomajiUtil.Kana.toRomaji(process.argv.slice(2).join(' ')))
+} else {
+    console.error('You cannot excecute this script without argument.')
+}
