@@ -1,0 +1,10 @@
+{
+  "name": "romaji-util",
+  "version": "0.0.1",
+  "description": "Romaji converter",
+  "main": "index.js",
+  "repository": "https://github.com/taichanne30/romaji-util",
+  "author": "taichanne30",
+  "license": "MIT",
+  "type": "module"
+}
