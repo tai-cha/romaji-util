@@ -22,7 +22,6 @@ const fromKana = (kana) => {
             }
             while (result.includes(str.katakana)) {
                 result = result.replace(str.katakana, str.romaji)
-                console.log(result)
             }
         }
     })
