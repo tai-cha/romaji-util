@@ -32,8 +32,8 @@ class Kana {
                 if (['ん', 'ン'].includes(result[i])) {
                     if(i < result.length - 1 && ['B', 'M', 'P'].includes(result[i+1])){
                         result = replaceChar(result, i, 'M')
-                    } else if (i < result.length - 1 && VOWELS.includes(result[i+1])) {
-                        result = replaceChar(result, i, "'")
+                    } else if (i < result.length - 1 && ['Y'].concat(VOWELS).includes(result[i+1])) {
+                        result = replaceChar(result, i, "N'")
                     } else {
                         result = replaceChar(result, i, 'N')
                     }
