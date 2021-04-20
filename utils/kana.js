@@ -14,5 +14,4 @@ class Kana {
     }
     static toRomaji = string => (new Kana(string)).toRomaji()
 }
-Object.defineProperty(Kana, 'get', ()=>Kana)
 export default Kana
