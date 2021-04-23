@@ -14,7 +14,7 @@ const dict_base = [["あ", "ア", "A"], ["い", "イ", "I"], ["う", "ウ", "U"]
 export const HEBON_TABLE = dict_base.map(item => new DictItem(item[0], item[1], item[2]))
 const SORTED_HEBON_TABLE = HEBON_TABLE.sort((a, b) => b.hiragana.length - a.hiragana.length)
 
-class Hebon extends Romaji{
+class Hebon extends Romaji {
     static fromKana = (kana, options={}) => {
         let result = String(kana.value)
         // 表に従って置換する

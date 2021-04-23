@@ -1,7 +1,4 @@
-import Hebon from './hebon.js'
-
-const VOWELS = ['A', 'E', 'I', 'O', 'U']
-
+import Hebon from './romaji/hebon.js'
 
 class Kana {
     constructor(val){
@@ -9,9 +6,9 @@ class Kana {
     }
     toRomaji(type="hebon", options={}) {
         if (type == "hebon") {
-            return Hebon.fromKana(this)
+            return Hebon.fromKana(this, options)
         }
     }
-    static toRomaji = string => (new Kana(string)).toRomaji()
+    static toRomaji = string => (new this(string)).toRomaji()
 }
 export default Kana
