@@ -9,28 +9,133 @@
 </head>
 
 <body>
+  <header>
+    <h1>Romaji-util デモページ (v0.0.1)</h1>
+  </header>
   <div id="app">
-    <span>{{this.data.text}}</span>
+    <div>
+      <h2>ひらがな・カタカナからヘボン式ローマ字に変換</h2>
+      <div class="input_group"><input type="text" name="" id="" v-model="hiragana_text" @keyDown.enter="convertRomaji"><button @click.prevent="convertRomaji">変換する！</button></div>
+      <div class="result">{{"結果:「"+ romaji_result + "」"}}</div>
+    </div>
+    <div>
+      <h2>ヘボン式ローマ字からひらがなに変換</h2>
+      <div class="input_group"><input type="text" v-model="romaji_text" @keyDown.enter="convertHiragana"><button @click.prevent="convertHiragana">変換する！</button></div>
+      <div class="result">{{"結果:「"+ hiragana_result + "」"}}</div>
+    </div>
   </div>
+  <footer><span>©2021 @taichanne30</span></footer>
 </body>
 <script type="module">
-  import RomajiUtil from '../index.js'
-  import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.esm.browser.js'
+'use strict'
 
-  let app = new Vue({
-    el: "#app",
-    data: {
-      text: "テスト用文字列"
-    },
-    methods: {
-      sayOK() {
-        this.text = "テスト成功"
-      }
-    },
-    mounted() {
+import RomajiUtil from '../index.js'
+import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.esm.browser.js'
 
+let app = new Vue({
+  el: "#app",
+  data: {
+    hiragana_text: "テスト よう もじれつ だよ",
+    romaji_result: "",
+    romaji_text: "TESUTO YOU MOJIRETSU DAYO",
+    hiragana_result: ""
+  },
+  methods: {
+    convertRomaji() {
+      this.romaji_result = RomajiUtil.Kana.toRomaji(this.hiragana_text).value
+    },
+    convertHiragana() {
+      this.hiragana_result = RomajiUtil.Hebon.toKana(this.romaji_text).value
     }
-  })
-</script>
+  },
+  mounted() {
 
+  }
+})
+</script>
+<style>
+  html, body {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    min-height: 100vh;
+    padding: 0;
+    background-color: #FAFAFA;
+  }
+
+  header {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 16px;
+    border-bottom: 1px solid lightgray;
+    background-color: #FAFAFA;
+  }
+
+  h1 {
+    font-size: 21px;
+    margin: 0;
+  }
+
+  h2 {
+    margin: 16px -1em 12px 0;
+    padding: 0 1em 0 0;
+    border-bottom: 1px solid lightgray;
+    width: auto;
+    display: inline-block;
+  }
+
+  div#app {
+    box-sizing: border-box;
+    width: 90%;
+    flex: 1;
+  }
+
+  .input_group {
+    height: 32px;
+  }
+
+  input{
+    border-radius: 4px 0 0 4px;
+    border-style: solid;
+    box-sizing: border-box;
+    outline: none;
+    height: 100%;
+    min-width: 20em;
+  }
+  button {
+    border-radius: 0 4px 4px 0;
+    border-left-width: 0;
+    border-style: solid;
+    height: 100%;
+    outline: none;
+  }
+
+  button:hover {
+    background-color: lightskyblue;
+    color: whitesmoke;
+  }
+
+  div.result {
+    margin: 2px 0;
+  }
+
+  footer {
+    border-top: 1px solid lightgray;
+    background-color: #FAFAFA;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+  }
+
+</style>
 </html>
