@@ -6,5 +6,11 @@
   "repository": "https://github.com/taichanne30/romaji-util",
   "author": "taichanne30",
   "license": "MIT",
-  "type": "module"
+  "type": "module",
+  "scripts": {
+    "romaji-util": "node index.js"
+  },
+  "bin": {
+    "romaji-util": "index.js"
+  }
 }
